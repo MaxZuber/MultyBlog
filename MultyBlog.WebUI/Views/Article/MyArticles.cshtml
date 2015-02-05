@@ -1,0 +1,37 @@
+﻿@using MultyBlog.Entities
+@{
+    
+    string username = ViewBag.Username;
+    int articleCount = ViewBag.ArticleCount;
+    ViewBag.Title = string.Format("{0} articles: {1}", username, articleCount);
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@{
+    List<tblArticles> articles = ViewBag.Articles;
+}
+
+
+
+
+<section class="MyArticles">
+    @foreach (tblArticles a in articles)
+    {
+        <section class="articleInfo">
+            <section class="articleHeader">
+                <h2>@Html.ActionLink(a.Header, "Index", "Article", new { a.ID }, null)</h2>
+            </section>
+            <p>
+                by
+                <small>
+                    @Html.ActionLink(a.tblUsers.UserName, "Index", "Profile", new { a.tblUsers.UserName }, null)
+                </small>
+                on
+                <small>
+                    @a.Date.ToString("dd-MM-yyyy (HH:mm)")
+                </small>
+            </p>
+
+        </section>
+    }
+</section>

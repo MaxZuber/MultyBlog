@@ -1,0 +1,27 @@
+﻿@model MultyBlog.WebUI.Models.NewArticleModel
+
+
+@{
+    ViewBag.Title = "New article";
+    Layout = "~/Views/Shared/Layout.cshtml";
+    
+}
+
+<section class="newArticle">
+
+    @using (Html.BeginForm("NewArticle", "Article", FormMethod.Post))
+    {
+        <section class="row">
+            @Html.TextBoxFor(m => m.Header, new { placeholder = "Article header ... ", @class = "NewArticleInputs col-md-12 text-header" })
+            @Html.TextAreaFor(m => m.Content, new { placeholder = "Article content ...", @class = "NewArticleInputs col-md-12 text-content" })    
+            @Html.TextBoxFor(m => m.Tags, new { placeholder = "Tags 'space' separated", @class = "col-md-12 text-tags" })
+            <input type="submit" class="btn btn-default pull-right text-post-button" value="Post"/>  
+        </section>
+
+    }
+
+</section>
+
+@section Styles{
+<link href="~/Content/new-article.css" rel="stylesheet"  type="text/css"/>
+}

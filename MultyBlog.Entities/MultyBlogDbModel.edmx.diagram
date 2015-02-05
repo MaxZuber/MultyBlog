@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cd89c56b21bb4707853b1c8a6765cc93" Name="Diagram1">
+        <EntityTypeShape EntityType="multyblogdb2Model.tblArticles" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="multyblogdb2Model.tblUsers" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="multyblogdb2Model.fk_tblArticles_UserID_tblUsers_ID" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="multyblogdb2Model.tblComments" Width="1.5" PointX="5.25" PointY="0.875" />
+        <AssociationConnector Association="multyblogdb2Model.fk_tblComments_ArticleID_tblArticles_ID" />
+        <AssociationConnector Association="multyblogdb2Model.fk_tblComments_UserID_tblUsers_ID" />
+        <EntityTypeShape EntityType="multyblogdb2Model.tblArticlesTags" Width="1.5" PointX="4.625" PointY="4" />
+        <EntityTypeShape EntityType="multyblogdb2Model.tblTags" Width="1.5" PointX="7.875" PointY="3" />
+        <AssociationConnector Association="multyblogdb2Model.fk_tblArticlesTags_ArticleID_tblArticles_ID" />
+        <AssociationConnector Association="multyblogdb2Model.fk_tblArticlesTags_TagID_tbTags_ID" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

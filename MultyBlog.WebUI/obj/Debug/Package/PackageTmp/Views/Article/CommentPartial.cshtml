@@ -1,0 +1,26 @@
+﻿@using MultyBlog.Entities
+
+@{
+    List<tblComments> comments = ViewBag.Comments;
+}
+
+@foreach (tblComments c in comments)
+{
+    <section class="comment">
+        <p class="label label-info">
+            by
+            <small>
+                @Html.ActionLink(c.tblUsers.UserName, "Index", "Profile", new { c.tblUsers.UserName }, null)
+            </small>
+            on
+            <small>
+                @c.Date.ToString("dd-MM-yyyy (HH:mm)")
+            </small>
+        </p>
+        <section class="commentText well">
+            @c.Comment
+        </section>
+
+
+    </section>
+}

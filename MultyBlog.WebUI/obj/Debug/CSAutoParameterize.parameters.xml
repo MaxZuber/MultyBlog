@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="MultyBlogDbEntityWeb-Web.config Connection String" description="MultyBlogDbEntityWeb Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/MultyBlogDbModel.csdl|res://*/MultyBlogDbModel.ssdl|res://*/MultyBlogDbModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=mssql1.gear.host;initial catalog=multyblogdb2;persist security info=True;user id=multyblogdb2;password=_samuraj15;multipleactiveresultsets=True;application name=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="D:\\Programming\\ASP\\MVC\\MultyBlog\\MultyBlog\.WebUI\\obj\\Debug\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='MultyBlogDbEntityWeb']/@connectionString" />
+  </parameter>
+</parameters>

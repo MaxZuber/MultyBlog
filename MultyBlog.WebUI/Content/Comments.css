@@ -1,0 +1,27 @@
+﻿/*.commentText{
+    text-align:left;
+    padding-left:25px;
+    color: #e6e6e6;
+
+    min-height:75px;
+
+
+
+}
+
+.commentUserInfo{
+    text-align:right;
+    color: #d1d1d1;
+}
+.commentUserInfo a{
+    color: #ffffff;
+    text-decoration:none;
+}
+.commentUserInfo a:hover{
+    color: black;
+    text-decoration:underline;
+}
+.comment{
+    background-color: #656565;
+    margin: 2px;
+}*/

@@ -1,0 +1,41 @@
+﻿@using MultyBlog.Entities;
+@{    
+    List<tblArticles> articles = ViewBag.Articles;
+    string tagName = ViewBag.Tag;
+    ViewBag.Title = string.Format("Tag: {0}", tagName);
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<section>
+    <h2>Search articles for tag @tagName :</h2>
+
+    @foreach (tblArticles a in articles)
+    {
+        <section class="row">
+            <section class="articleInfo col-md-11 col-md-offset-1" >
+                <section class="articleHeader">
+                    <h2>@Html.ActionLink(a.Header, "Index", "Article", new { a.ID }, null)</h2>
+                </section>
+                <p>
+                    by
+                    <small>
+                        @Html.ActionLink(a.tblUsers.UserName, "Index", "Profile", new { a.tblUsers.UserName }, null)
+                    </small>
+                    on
+                    <small>
+                        @a.Date.ToString("HH:mm dd-MM-yyyy")
+                    </small>
+                </p>
+
+                @*<section class="articleUserInfo">
+                <h5 class="displayinline">by</h5>
+                <h6 class="displayinline">@Html.ActionLink(a.tblUsers.UserName, "Index", "Profile", new { a.tblUsers.UserName }, null)</h6>
+                <h5 class="displayinline">on</h5>
+                <h6 class="displayinline">  @a.Date.ToString("HH:mm dd-MM-yyyy")</h6>
+            </section>*@
+
+            </section>
+        </section>
+       
+    }
+</section>

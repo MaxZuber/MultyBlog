@@ -1,0 +1,19 @@
+﻿@model MultyBlog.WebUI.Models.ArticleContentModel
+
+<div>
+    <h2 class="text-center">@Model.Header</h2>
+    <div class="lead">@Model.Content</div>
+
+    <div class="articleDate">
+
+       <p class="text-right"> by @Html.ActionLink(Model.Username, "Index", "Profile", new { UserName = Model.Username }, null)  on @Model.Date.ToShortDateString()</p>
+        <p>
+            <span>Tags: </span>
+           @foreach(string t in Model.Tags)
+           {
+               @Html.ActionLink(t, "Index", "Tag", new { tag = t }, null)
+            <span> </span>
+           }
+        </p>
+    </div>
+</div>

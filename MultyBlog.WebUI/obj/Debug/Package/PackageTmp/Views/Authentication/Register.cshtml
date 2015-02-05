@@ -1,0 +1,76 @@
+﻿@model MultyBlog.WebUI.Models.RegistrationUserModel
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<section class="registerNewUserWraper">
+    <section class="registerNewUser">
+
+        @using (Html.BeginForm("Register", "Authentication", FormMethod.Post, new { role = "form", @class = "form-horizontal" }))
+        {
+            <section class="form-group">
+                @Html.LabelFor(m => m.User.Username, new { @class = "col-sm-4 control-label" })
+                <section class="col-sm-8">
+                    @Html.TextBoxFor(m => m.User.Username, new { @class = "form-control" })
+                </section> 
+                <section class="col-sm-offset-4 col-sm-8">
+                    @Html.ValidationMessageFor(m => m.User.Username, null, new { @class = "label label-danger" })
+                </section>
+            </section>
+
+            <section class="form-group">
+                @Html.LabelFor(m => m.User.Email, new { @class = "col-sm-4 control-label" })
+                <section class="col-sm-8">
+                    @Html.TextBoxFor(m => m.User.Email, new { @class = "form-control" })
+                </section>
+                <section class="col-sm-offset-4 col-sm-8">
+                    @Html.ValidationMessageFor(m => m.User.Email, null, new { @class = "label label-danger" })
+                </section>
+                
+            </section>
+
+            <section class="form-group">
+                @Html.LabelFor(m => m.User.Password, new { @class = "col-sm-4 control-label" })
+                <section class="col-sm-8">
+                    @Html.TextBoxFor(m => m.User.Password, new { @class = "form-control", type = "password" })
+                </section>
+                <section class="col-sm-offset-4 col-sm-8">
+                    @Html.ValidationMessageFor(m => m.User.Password, null, new { @class = "label label-danger" })
+                    @Html.ValidationMessageFor(m => m, null, new { @class = "label label-danger" })
+                </section>           
+            </section>
+
+            <section class="form-group">
+                @Html.LabelFor(m => m.PasswordRepeat, new { @class = "col-sm-4 control-label " })
+                <section class="col-sm-8">
+                    @Html.TextBoxFor(m => m.PasswordRepeat, new { @class = "form-control", type = "password" })
+                </section>
+                <section class="col-sm-offset-4 col-sm-8">
+                    @Html.ValidationMessageFor(m => m.PasswordRepeat, null, new { @class = "label label-danger" })
+                </section>  
+            </section>
+            
+            <section class="form-group">
+                <section class="col-sm-offset-4 col-sm-8">
+                    <button type="submit" value="Register" class="btn btn-default">Register</button>
+                </section>
+                
+            </section>
+
+            
+        }
+
+    </section>
+
+
+
+
+
+</section>
+
+@section Styles
+{
+    <link href="~/Content/RegisterNew.css" rel="stylesheet" type="text/css" />
+}

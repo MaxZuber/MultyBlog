@@ -1,0 +1,18 @@
+﻿@model MultyBlog.WebUI.Models.RegistrationUserModel
+
+@{
+    ViewBag.Title = "SuccessfullRegistration";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<section class="alert alert-success">
+    <strong>
+        Congratulations!
+    </strong>
+    You have being successsfully registered as  @Html.ActionLink(@Model.User.Username, @Model.User.Username, "Profile", null, new { @class = "navbar-link" }) 
+</section>
+
+@section Script
+{
+    <script src="~/Scripts/pages/SuccessfullRegistration.js" type="text/javascript"></script>
+}

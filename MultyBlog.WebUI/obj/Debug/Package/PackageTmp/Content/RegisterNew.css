@@ -1,0 +1,22 @@
+﻿/*.registerNewUserWraper{
+    position: relative;
+    
+   
+}
+
+.registerNewUser {
+    width:50%;
+    text-align:left;
+    border : 1px solid red;
+    margin: auto auto;
+}
+
+
+.registerNewUser p {
+    border: 1px solid blue;
+}
+.registerNewUser p label {
+
+}
+.registerNewUser p input {
+}*/

@@ -1,0 +1,11 @@
+D:\Programming\ASP\MVC\MultyBlog\MultyBlog.Dal\bin\Release\MultyBlog.Dal.dll.config
+D:\Programming\ASP\MVC\MultyBlog\MultyBlog.Dal\bin\Release\MultyBlog.Dal.dll
+D:\Programming\ASP\MVC\MultyBlog\MultyBlog.Dal\bin\Release\MultyBlog.Dal.pdb
+D:\Programming\ASP\MVC\MultyBlog\MultyBlog.Dal\bin\Release\EntityFramework.dll
+D:\Programming\ASP\MVC\MultyBlog\MultyBlog.Dal\bin\Release\EntityFramework.SqlServer.dll
+D:\Programming\ASP\MVC\MultyBlog\MultyBlog.Dal\bin\Release\MultyBlog.Entities.dll
+D:\Programming\ASP\MVC\MultyBlog\MultyBlog.Dal\bin\Release\EntityFramework.xml
+D:\Programming\ASP\MVC\MultyBlog\MultyBlog.Dal\bin\Release\EntityFramework.SqlServer.xml
+D:\Programming\ASP\MVC\MultyBlog\MultyBlog.Dal\bin\Release\MultyBlog.Entities.pdb
+D:\Programming\ASP\MVC\MultyBlog\MultyBlog.Dal\obj\Release\MultyBlog.Dal.dll
+D:\Programming\ASP\MVC\MultyBlog\MultyBlog.Dal\obj\Release\MultyBlog.Dal.pdb

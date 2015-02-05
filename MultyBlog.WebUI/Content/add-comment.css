@@ -1,0 +1,18 @@
+﻿/*.addCommentWraper{
+    background-color: #656565;
+}
+
+.taComment{
+    resize:vertical;
+    width:98%;
+    margin:2px;
+}*/
+
+.add-comment{
+    padding:20px;
+}
+.taComment{
+    margin-bottom: 10px;
+    resize:vertical;
+    min-height:150px;
+}

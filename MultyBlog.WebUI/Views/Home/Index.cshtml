@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "MultyBlog";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@using MultyBlog.Entities
+
+@{
+    List<tblArticles> articles = ViewBag.Articles;
+}
+<section class="ArticleList">
+    @foreach (tblArticles a in articles)
+    {
+        <section class="articleInfo">
+            <section class="articleHeader">
+                <h2>@Html.ActionLink(a.Header, "Index", "Article", new { a.ID }, null)</h2>
+            </section>
+            <p> by 
+            <small>
+                @Html.ActionLink(a.tblUsers.UserName, "Index", "Profile", new { a.tblUsers.UserName }, null)
+            </small>
+             on 
+            <small>
+                @a.Date.ToString("dd-MM-yyyy (HH:mm)")
+            </small>
+            </p>
+            
+        </section>          
+    }
+</section>
+
+@section Script
+{
+    
+<script src="~/Scripts/pages/Home.js" type="text/javascript"></script>
+}
+
+
+@*@section Styles
+{
+<link href="~/Content/ArticleList.css" rel="stylesheet" type="text/css"/>
+}*@
+

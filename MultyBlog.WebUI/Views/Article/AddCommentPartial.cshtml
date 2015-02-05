@@ -1,0 +1,20 @@
+﻿@model MultyBlog.WebUI.Models.ArticleCommentModel
+@using MultyBlog.WebUI.Models
+@{
+    ArticleContentModel articleContentModel = ViewBag.ArticleContentModel;
+    int articleID = ViewBag.ArticleID;
+}
+
+
+
+
+
+<section class="add-comment">
+    <section class="row text-right">
+
+        @Html.TextAreaFor(m => m.Text, new { placeholder = "Your comment here ...", @class = "taComment col-md-12", id = "taUserComment" })
+        <button type="button" id="aButton" , value="Comment" class="btn btn-info ">Comment</button>
+    </section> 
+</section>
+
+

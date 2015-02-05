@@ -1,0 +1,121 @@
+﻿@{
+    Layout = null;
+}
+
+@{
+    System.Security.Principal.IPrincipal user = HttpContext.Current.User;
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @*<link href="~/Content/Global.css" rel="stylesheet" type="text/css" />*@
+    @*<script src="~/Scripts/libs/jquery-2.1.3.js" type="text/javascript"></script>*@
+
+    @Scripts.Render("~/bundles/AllScript")
+
+    <script src="~/Scripts/libs/bootstrap/bootstrap.js" type="text/javascript"></script>
+    <link href="~/Content/libs/bootstrap.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap-3-vert-offset-shim.css" rel="stylesheet" type="text/css" />
+    @Styles.Render("~/bundles/AllStyles")
+
+
+    @RenderSection(name: "Header", required: false)
+    @RenderSection(name: "Styles", required: false)
+    @RenderSection(name: "Script", required: false)
+
+
+
+</head>
+<body>
+
+    <header class="navbar navbar-default navbar-static-top nav-custom-style" role="navigation">
+
+        <section class="container">
+            <section class="navbar-header">
+                <a class="navbar-brand" href="../">MultyBlog</a>
+            </section>     
+                @{
+                    Html.RenderAction("Header", "Layout");
+                }                  
+        </section>
+    </header>
+    <section class="container">
+        <section class="row">
+
+            <section class="col-md-2 vert-offset-top-4">
+                <ul class="nav nav-pills nav-stacked ">
+                    <li role="presentation" id="navLiHome">@Html.ActionLink("Home", "index", "home")</li>
+                </ul>
+            </section>
+
+            <section class="col-md-7">
+                @{
+                    Html.RenderAction("TopNavBar", "Layout");
+                }
+                <section class="articleWraper">
+                    @RenderBody()
+                </section>
+
+            </section>
+
+            <section class="col-md-3 vert-offset-top-4">
+
+                <section class="panel panel-primary">
+                    <section class="panel-heading">
+                        About
+                    </section>
+                    <section class="panel-body">
+                        <h4>
+                            @Html.ActionLink("About the Blog", "blog", "about",  new { Area  = "" }, null)
+                        </h4>
+                        <h4>
+                            @Html.ActionLink("About Author", "author", "about", new { Area = "" }, null)
+                        </h4>
+                        <h4>
+                            @Html.ActionLink("About ASP.NET", "aspnet", "about", new { Area = "" }, null)
+                        </h4>
+                        <h4>
+                            @Html.ActionLink("About MVC", "mvc", "about", new { Area = "" }, null)
+                        </h4>
+
+                    </section>
+                </section>
+
+                <section class="popularTags">
+                    @{
+                        Html.RenderAction("PopularTags", "Layout");
+                    }
+                </section>
+
+                @*<section class="panel panel-primary">
+                    <section class="panel-heading">Popular tags</section>
+                    <section class="panel-body">
+
+                        <p>
+                            @Html.ActionLink("Life", "life", "Tag", new { Area = "" }, null)
+                        </p>
+                        <p>
+                            @Html.ActionLink("Sport", "sport", "Tag", new { Area = "" }, null)
+                        </p>
+                        <p>
+                            @Html.ActionLink("Animals", "animals", "Tag", new { Area = "" }, null)
+                        </p>
+                    </section>
+                </section>*@
+            </section>
+
+        </section>
+
+    </section>
+
+
+    <footer>
+        @*<h1>CURRENT TIME: @DateTime.Now</h1>*@
+    </footer>
+</body>
+</html>

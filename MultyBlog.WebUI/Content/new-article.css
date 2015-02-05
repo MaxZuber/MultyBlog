@@ -1,0 +1,21 @@
+﻿
+
+.text-header {
+    padding:10px;
+}
+
+.text-content {
+    padding: 10px;
+    margin:10px 0px;
+    resize:vertical;
+    min-height:450px;
+}
+
+.text-tags{
+    padding:10px;
+    margin-bottom:10px;
+}
+
+.text-post-button{
+    width:75px;
+}

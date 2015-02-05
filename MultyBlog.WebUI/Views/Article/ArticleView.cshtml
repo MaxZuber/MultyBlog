@@ -1,0 +1,54 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@{
+    System.Security.Principal.IPrincipal user = HttpContext.Current.User;
+}
+
+@using MultyBlog.WebUI.Models
+
+@{
+    ArticleContentModel articleContentModel = ViewBag.ArticleContentModel;
+    int articleID = ViewBag.ArticleID;
+
+    bool showCommentForm = ViewBag.ShowCommentForm;
+
+    ViewBag.Title = articleContentModel.Header;
+}
+<div>
+    <section class="article">
+        @Html.Partial("ContentPartial", articleContentModel)
+    </section>
+
+
+
+
+    
+
+    @if (showCommentForm)
+    {
+        <section class="addCommentWraper">
+            @Html.Partial("AddCommentPartial")
+        </section>
+    }
+
+    <section class="comments">
+        @{
+    Html.RenderPartial("CommentPartial");
+        }
+    </section>
+
+    <section class="hiddenItems">
+        <input type="hidden" id="h_articleId" value="@articleID" />
+    </section>
+</div>
+
+
+@section Styles{
+    @*<link href="~/Content/Article.css" rel="stylesheet" type="text/css"/>
+    <link href="~/Content/Comments.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/AddComment.css" rel="stylesheet" type="text/css"/>
+    <script src="~/Scripts/pages/AddComment.js" type="text/javascript"></script>*@
+<link href="~/Content/add-comment.css" rel="stylesheet" type="text/css"/>
+    }

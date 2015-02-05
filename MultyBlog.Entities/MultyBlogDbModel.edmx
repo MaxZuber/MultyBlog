@@ -1,0 +1,368 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="multyblogdb2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblArticles">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Header" Type="nvarchar" MaxLength="1024" Nullable="false" />
+          <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblArticlesTags">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ArticleID" Type="int" Nullable="false" />
+          <Property Name="TagID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblComments">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="ArticleID" Type="int" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="2048" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblTags">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="TagRequest" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblUsers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="RegistrationDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_tblArticles_UserID_tblUsers_ID">
+          <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="1" />
+          <End Role="tblArticles" Type="Self.tblArticles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tblArticles">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_tblArticlesTags_ArticleID_tblArticles_ID">
+          <End Role="tblArticles" Type="Self.tblArticles" Multiplicity="1" />
+          <End Role="tblArticlesTags" Type="Self.tblArticlesTags" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblArticles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tblArticlesTags">
+              <PropertyRef Name="ArticleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_tblArticlesTags_TagID_tbTags_ID">
+          <End Role="tblTags" Type="Self.tblTags" Multiplicity="1" />
+          <End Role="tblArticlesTags" Type="Self.tblArticlesTags" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTags">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tblArticlesTags">
+              <PropertyRef Name="TagID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_tblComments_ArticleID_tblArticles_ID">
+          <End Role="tblArticles" Type="Self.tblArticles" Multiplicity="1" />
+          <End Role="tblComments" Type="Self.tblComments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblArticles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tblComments">
+              <PropertyRef Name="ArticleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_tblComments_UserID_tblUsers_ID">
+          <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="1" />
+          <End Role="tblComments" Type="Self.tblComments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tblComments">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="multyblogdb2ModelStoreContainer">
+          <EntitySet Name="tblArticles" EntityType="Self.tblArticles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblArticlesTags" EntityType="Self.tblArticlesTags" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblComments" EntityType="Self.tblComments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTags" EntityType="Self.tblTags" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUsers" EntityType="Self.tblUsers" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_tblArticles_UserID_tblUsers_ID" Association="Self.fk_tblArticles_UserID_tblUsers_ID">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblArticles" EntitySet="tblArticles" />
+          </AssociationSet>
+          <AssociationSet Name="fk_tblArticlesTags_ArticleID_tblArticles_ID" Association="Self.fk_tblArticlesTags_ArticleID_tblArticles_ID">
+            <End Role="tblArticles" EntitySet="tblArticles" />
+            <End Role="tblArticlesTags" EntitySet="tblArticlesTags" />
+          </AssociationSet>
+          <AssociationSet Name="fk_tblArticlesTags_TagID_tbTags_ID" Association="Self.fk_tblArticlesTags_TagID_tbTags_ID">
+            <End Role="tblTags" EntitySet="tblTags" />
+            <End Role="tblArticlesTags" EntitySet="tblArticlesTags" />
+          </AssociationSet>
+          <AssociationSet Name="fk_tblComments_ArticleID_tblArticles_ID" Association="Self.fk_tblComments_ArticleID_tblArticles_ID">
+            <End Role="tblArticles" EntitySet="tblArticles" />
+            <End Role="tblComments" EntitySet="tblComments" />
+          </AssociationSet>
+          <AssociationSet Name="fk_tblComments_UserID_tblUsers_ID" Association="Self.fk_tblComments_UserID_tblUsers_ID">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblComments" EntitySet="tblComments" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="multyblogdb2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblArticles">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Header" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="tblUsers" Relationship="Self.fk_tblArticles_UserID_tblUsers_ID" FromRole="tblArticles" ToRole="tblUsers" />
+          <NavigationProperty Name="tblComments" Relationship="multyblogdb2Model.fk_tblComments_ArticleID_tblArticles_ID" FromRole="tblArticles" ToRole="tblComments" />
+          <NavigationProperty Name="tblArticlesTags" Relationship="multyblogdb2Model.fk_tblArticlesTags_ArticleID_tblArticles_ID" FromRole="tblArticles" ToRole="tblArticlesTags" />
+        </EntityType>
+        <EntityType Name="tblUsers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="tblArticles" Relationship="Self.fk_tblArticles_UserID_tblUsers_ID" FromRole="tblUsers" ToRole="tblArticles" />
+          <NavigationProperty Name="tblComments" Relationship="multyblogdb2Model.fk_tblComments_UserID_tblUsers_ID" FromRole="tblUsers" ToRole="tblComments" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="RegistrationDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <Association Name="fk_tblArticles_UserID_tblUsers_ID">
+          <End Role="tblUsers" Type="Self.tblUsers" Multiplicity="1" />
+          <End Role="tblArticles" Type="Self.tblArticles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tblArticles">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MultyBlogDbEntityWeb" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblArticles" EntityType="Self.tblArticles" />
+          <EntitySet Name="tblUsers" EntityType="Self.tblUsers" />
+          <AssociationSet Name="fk_tblArticles_UserID_tblUsers_ID" Association="Self.fk_tblArticles_UserID_tblUsers_ID">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblArticles" EntitySet="tblArticles" />
+          </AssociationSet>
+          <EntitySet Name="tblComments" EntityType="multyblogdb2Model.tblComments" />
+          <AssociationSet Name="fk_tblComments_ArticleID_tblArticles_ID" Association="multyblogdb2Model.fk_tblComments_ArticleID_tblArticles_ID">
+            <End Role="tblArticles" EntitySet="tblArticles" />
+            <End Role="tblComments" EntitySet="tblComments" />
+          </AssociationSet>
+          <AssociationSet Name="fk_tblComments_UserID_tblUsers_ID" Association="multyblogdb2Model.fk_tblComments_UserID_tblUsers_ID">
+            <End Role="tblUsers" EntitySet="tblUsers" />
+            <End Role="tblComments" EntitySet="tblComments" />
+          </AssociationSet>
+          <EntitySet Name="tblArticlesTags" EntityType="multyblogdb2Model.tblArticlesTags" />
+          <EntitySet Name="tblTags" EntityType="multyblogdb2Model.tblTags" />
+          <AssociationSet Name="fk_tblArticlesTags_ArticleID_tblArticles_ID" Association="multyblogdb2Model.fk_tblArticlesTags_ArticleID_tblArticles_ID">
+            <End Role="tblArticles" EntitySet="tblArticles" />
+            <End Role="tblArticlesTags" EntitySet="tblArticlesTags" />
+          </AssociationSet>
+          <AssociationSet Name="fk_tblArticlesTags_TagID_tbTags_ID" Association="multyblogdb2Model.fk_tblArticlesTags_TagID_tbTags_ID">
+            <End Role="tblTags" EntitySet="tblTags" />
+            <End Role="tblArticlesTags" EntitySet="tblArticlesTags" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tblComments">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="ArticleID" Type="Int32" Nullable="false" />
+          <Property Name="Comment" Type="String" Nullable="false" MaxLength="2048" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="tblArticles" Relationship="multyblogdb2Model.fk_tblComments_ArticleID_tblArticles_ID" FromRole="tblComments" ToRole="tblArticles" />
+          <NavigationProperty Name="tblUsers" Relationship="multyblogdb2Model.fk_tblComments_UserID_tblUsers_ID" FromRole="tblComments" ToRole="tblUsers" />
+        </EntityType>
+        <Association Name="fk_tblComments_ArticleID_tblArticles_ID">
+          <End Type="multyblogdb2Model.tblArticles" Role="tblArticles" Multiplicity="1" />
+          <End Type="multyblogdb2Model.tblComments" Role="tblComments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblArticles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tblComments">
+              <PropertyRef Name="ArticleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_tblComments_UserID_tblUsers_ID">
+          <End Type="multyblogdb2Model.tblUsers" Role="tblUsers" Multiplicity="1" />
+          <End Type="multyblogdb2Model.tblComments" Role="tblComments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblUsers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tblComments">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tblArticlesTags">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ArticleID" Type="Int32" Nullable="false" />
+          <Property Name="TagID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblArticles" Relationship="multyblogdb2Model.fk_tblArticlesTags_ArticleID_tblArticles_ID" FromRole="tblArticlesTags" ToRole="tblArticles" />
+          <NavigationProperty Name="tblTags" Relationship="multyblogdb2Model.fk_tblArticlesTags_TagID_tbTags_ID" FromRole="tblArticlesTags" ToRole="tblTags" />
+        </EntityType>
+        <EntityType Name="tblTags">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="TagRequest" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tblArticlesTags" Relationship="multyblogdb2Model.fk_tblArticlesTags_TagID_tbTags_ID" FromRole="tblTags" ToRole="tblArticlesTags" />
+        </EntityType>
+        <Association Name="fk_tblArticlesTags_ArticleID_tblArticles_ID">
+          <End Type="multyblogdb2Model.tblArticles" Role="tblArticles" Multiplicity="1" />
+          <End Type="multyblogdb2Model.tblArticlesTags" Role="tblArticlesTags" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblArticles">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tblArticlesTags">
+              <PropertyRef Name="ArticleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_tblArticlesTags_TagID_tbTags_ID">
+          <End Type="multyblogdb2Model.tblTags" Role="tblTags" Multiplicity="1" />
+          <End Type="multyblogdb2Model.tblArticlesTags" Role="tblArticlesTags" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTags">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tblArticlesTags">
+              <PropertyRef Name="TagID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="multyblogdb2ModelStoreContainer" CdmEntityContainer="MultyBlogDbEntityWeb">
+          <EntitySetMapping Name="tblArticles">
+            <EntityTypeMapping TypeName="multyblogdb2Model.tblArticles">
+              <MappingFragment StoreEntitySet="tblArticles">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Header" ColumnName="Header" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUsers">
+            <EntityTypeMapping TypeName="multyblogdb2Model.tblUsers">
+              <MappingFragment StoreEntitySet="tblUsers">
+                <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblComments">
+            <EntityTypeMapping TypeName="multyblogdb2Model.tblComments">
+              <MappingFragment StoreEntitySet="tblComments">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="ArticleID" ColumnName="ArticleID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblArticlesTags">
+            <EntityTypeMapping TypeName="multyblogdb2Model.tblArticlesTags">
+              <MappingFragment StoreEntitySet="tblArticlesTags">
+                <ScalarProperty Name="TagID" ColumnName="TagID" />
+                <ScalarProperty Name="ArticleID" ColumnName="ArticleID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTags">
+            <EntityTypeMapping TypeName="multyblogdb2Model.tblTags">
+              <MappingFragment StoreEntitySet="tblTags">
+                <ScalarProperty Name="TagRequest" ColumnName="TagRequest" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,30 @@
+﻿@using MultyBlog.Entities;
+
+@{
+    
+    List<tblTags> popularTags = ViewBag.PopularTags;
+}
+
+
+<section class="panel panel-primary">
+    <section class="panel-heading">Popular tags</section>
+    <section class="panel-body">
+
+        @foreach(tblTags t in popularTags)
+        {
+            <p>
+                @Html.ActionLink(t.Name, t.Name, "Tag", new { Area = "" }, null)
+            </p>
+        }
+
+        @*<p>
+            @Html.ActionLink("Life", "life", "Tag", new { Area = "" }, null)
+        </p>
+        <p>
+            @Html.ActionLink("Sport", "sport", "Tag", new { Area = "" }, null)
+        </p>
+        <p>
+            @Html.ActionLink("Animals", "animals", "Tag", new { Area = "" }, null)
+        </p>*@
+    </section>
+</section>

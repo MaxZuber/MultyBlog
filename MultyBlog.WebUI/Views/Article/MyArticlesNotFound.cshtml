@@ -1,0 +1,11 @@
+﻿@using MultyBlog.Entities
+@{
+
+    string username = ViewBag.Username;
+    int articleCount = ViewBag.ArticleCount;
+    ViewBag.Title = string.Format("{0} articles: {1}", username, articleCount);
+    Layout = "~/Views/Shared/Layout.cshtml";
+    }
+<section class="MyArticles alert alert-warning">
+    You have no articles!
+</section>

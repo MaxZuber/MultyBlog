@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "RegistrationFailed";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<section class="alert alert-danger">
+    <strong>
+        Sorry!
+    </strong>
+    Your registration have being failed:( 
+</section>
+
+@*@Html.ActionLink("Please try again", "Register", null, new { @class = "bg-info center-block" })*@
+<button id="btnTryAgainRegister" type="button" class="btn btn-primary center-block">Please try again</button>
+
+
+@section Script
+{
+    
+<script src="~/Scripts/pages/RegistrationFailed.js" type="text/javascript"></script>
+}

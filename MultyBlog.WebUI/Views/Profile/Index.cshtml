@@ -1,0 +1,32 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+@{
+    MultyBlog.Entities.tblUsers user = ViewBag.User;
+
+    ViewBag.Title = string.Format("Profile : {0}", user.UserName);
+}
+
+<section class="row">
+
+
+    <section class="row">
+        <img src="http://amourcratez.net/images/avatars/no_avatar.png" alt="140x140" class="img-circle col-md-3" />
+        <section class="col-md-3"><strong>Username : </strong></section>
+        <section class="col-md-6">@user.UserName</section>
+
+        <section class="col-md-3"><strong>Email : </strong></section>
+        <section class="col-md-5">@user.Email</section>
+
+        <section class="col-md-3"><strong>Registered : </strong></section>
+        <section class="col-md-5">@user.RegistrationDate.ToShortDateString()</section>
+
+        <section class="col-md-3"><strong>Articles count : </strong></section>
+        <section class="col-md-5">@user.tblArticles.Count</section>
+
+        <section class="col-md-3"><strong>Coments count : </strong></section>
+        <section class="col-md-5">@user.tblComments.Count</section>
+    </section>
+</section>
+

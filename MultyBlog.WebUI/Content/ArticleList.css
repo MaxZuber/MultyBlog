@@ -1,0 +1,33 @@
+﻿/*.articleHeader {
+    text-align: left;
+}
+
+.articleUserInfo {
+    text-align: right;
+}
+
+.articleHeader a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+    .articleHeader a:hover {
+        color: #1e1e1e;
+    }
+
+.articleUserInfo{
+    color: #d1d1d1;
+}
+.articleUserInfo a{
+    color: #ffffff;
+    text-decoration:none 
+}
+.articleUserInfo a:hover{
+    color: black;
+    text-decoration:underline;
+}
+
+.articleWraper {
+    background-color: #656565;
+    color: #C9C9C7;
+}*/

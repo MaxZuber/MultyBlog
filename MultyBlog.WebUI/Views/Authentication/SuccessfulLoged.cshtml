@@ -1,0 +1,21 @@
+﻿@model MultyBlog.WebUI.Models.UserModel
+
+@{
+    ViewBag.Title = "SuccessfulLoged";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<section class="alert alert-success">
+    <strong>
+        Congratulations!
+    </strong>
+    You have being successsfully loged in as  @Html.ActionLink(@Model.Username, @Model.Username, "Profile", null, new { @class = "navbar-link" })
+</section>
+
+<button id="btnGoToMainPage" type="button" class="btn btn-primary center-block">Go to Main page</button>
+
+@section Script
+{
+    
+<script src="~/Scripts/pages/SuccessfulLoged.js" type="text/javascript"></script>
+}
