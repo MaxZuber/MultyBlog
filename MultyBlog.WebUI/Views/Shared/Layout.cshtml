@@ -46,14 +46,13 @@
     </header>
     <section class="container">
         <section class="row">
-
-            <section class="col-md-2 vert-offset-top-4">
+            @*<section class="col-md-2 vert-offset-top-4">
                 <ul class="nav nav-pills nav-stacked ">
                     <li role="presentation" id="navLiHome">@Html.ActionLink("Home", "index", "home")</li>
                 </ul>
-            </section>
+            </section>*@
 
-            <section class="col-md-7">
+            <section class="col-md-offset-2 col-md-7">
                 @{
                     Html.RenderAction("TopNavBar", "Layout");
                 }

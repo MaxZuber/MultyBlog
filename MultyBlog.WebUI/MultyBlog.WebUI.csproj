@@ -185,6 +185,7 @@
     <Content Include="Content\new-article.css" />
     <Content Include="Content\RegisterNew.css" />
     <Content Include="Global.asax" />
+    <Content Include="Imgs\no-avatar.png" />
     <Content Include="Scripts\libs\bootstrap\bootstrap.js" />
     <Content Include="Scripts\libs\jquery-2.1.3.js" />
     <Content Include="Scripts\libs\jquery-2.1.3.min.js" />
