@@ -1,4 +1,7 @@
 # MultyBlog
 ASP.NET MVC
 
-Hosted at - http://multyblog.gear.host/
+Web site - http://multyblog.gear.host/
+
+Register page  - http://multyblog.gear.host/register
+Login page - http://multyblog.gear.host/login
